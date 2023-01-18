@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Projeto {
+  id          Int         @id
+  questions   Questions?
+}
+
+model Questions {
+  id                              Int       @id
+  projeto                         Projeto   @relation(fields: [id], references: [id])
+  autarquias                      Autarquia[]
+  motivoAutarquiaSemProtocolo     String?
+  statusAutarquia                 StatusAutarquia?
+  contatoAutarquia                String?
+  ultimaInteracaoEPrazoResposta   String?
+  desenvolverContato              String?
+  proximosPassosEPrazo            String?
+  vigencia                        String?
+}
+
+enum Autarquia {
+  PREFEITURA
+  CONVIAS
+  RODOVIA
+  FERROVIA
+  ENERGIA
+}
+
+enum StatusAutarquia {
+  ANALISE
+  APROVADO
+  REPROVADO
+  PARADO
+  CANCELADO
+}
