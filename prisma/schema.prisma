@@ -8,14 +8,14 @@ datasource db {
 }
 
 model Projeto {
-  id          Int         @id
-  questions   Questions?
+  id           Int         @id
+  autarquias   Autarquia[]
 }
 
-model Questions {
-  id                              Int       @id
+model Autarquia {
+  id                              Int      
   projeto                         Projeto   @relation(fields: [id], references: [id])
-  autarquias                      Autarquia[]
+  nome                            NomeAutarquia
   motivoAutarquiaSemProtocolo     String?
   statusAutarquia                 StatusAutarquia?
   contatoAutarquia                String?
@@ -23,9 +23,11 @@ model Questions {
   desenvolverContato              String?
   proximosPassosEPrazo            String?
   vigencia                        String?
+
+  @@id([id, nome])
 }
 
-enum Autarquia {
+enum NomeAutarquia {
   PREFEITURA
   CONVIAS
   RODOVIA

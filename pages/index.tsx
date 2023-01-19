@@ -4,9 +4,13 @@ import { useState } from 'react';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 
-type Questions = {
+type Projeto = {
   id: number;
-  autarquias: string[];
+  autarquias: Autarquia[];
+};
+
+type Autarquia = {
+  nome: string;
   motivoAutarquiaSemProtocolo: string;
   statusAutarquia: string;
   contatoAutarquia: string;
@@ -14,15 +18,21 @@ type Questions = {
   desenvolverContato: string;
   proximosPassosEPrazo: string;
   vigencia: string;
-};
+}
 
-export default function Home({ projects }: { projects: number[] }) {
-  const [questions, setQuestions] = useState<Questions | null>(null);
+export default function Home({ projetos }: { projetos: Projeto[] }) {
+  const [autarquia, setAutarquia] = useState<Autarquia | null>(null);
+  const [selected, setSelected] = useState<number | null>(null);
 
-  async function getQuestions(id: number) {
-    const response = await fetch(`/api/project-questions?id=${id}`);
-    const data = (await response.json()) as { questions: Questions };
-    setQuestions(data['questions']);
+  async function getAutarquia(id: number, nome: string) {
+    try {
+      setSelected(id);
+      const response = await fetch(`/api/project-questions?id=${id}&nome=${nome}`);
+      const data = (await response.json()) as { autarquia: Autarquia };
+      setAutarquia(data.autarquia);
+    } catch {
+      setAutarquia(null);
+    }
   }
 
   return (
@@ -40,33 +50,36 @@ export default function Home({ projects }: { projects: number[] }) {
             <div className='grid items-start h-full grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8'>
               {/* Left column */}
               <div className='grid h-full grid-cols-1 gap-4 lg:col-span-2'>
-                <section className='p-10 overflow-hidden border rounded-lg shadow border-white/20 bg-white/20 backdrop-blur-md'>
-                  <h1 className='mb-5 text-3xl font-bold text-white'>Projeto {questions?.id}</h1>
-                  <ul className='flex flex-col gap-5 text-xl text-gray-400'>
-                    <li>Quais säo as autarquias envolvidas? <p className='font-bold text-white'>{questions?.autarquias}</p></li>
-                    <li>Qual o motivo da autarquia não protocolada? <p className='font-bold text-white'>{questions?.motivoAutarquiaSemProtocolo}</p></li>
-                    <li>Qual o status do projeto na autarquia? <p className='font-bold text-white'>{questions?.statusAutarquia}</p></li>
-                    <li>Qual o contato da autarquia? <p className='font-bold text-white'>{questions?.contatoAutarquia}</p></li>
-                    <li>Qual a última interação com a autarquia? e qual o prazo para resposta? <p className='font-bold text-white'>{questions?.ultimaInteracaoEPrazoResposta}</p></li>
-                    <li>É possível desenvolver alguem contato com a autarquia? <p className='font-bold text-white'>{questions?.desenvolverContato}</p></li>
-                    <li>Quais os próximos passos do processo? <p className='font-bold text-white'>{questions?.proximosPassosEPrazo}</p></li>
-                    <li>Qual a vigência? <p className='font-bold text-white'>{questions?.vigencia}</p></li>
+                <section className='p-10 overflow-hidden bg-white border rounded-lg shadow border-white/20 backdrop-blur-md'>
+                  <h1 className='text-3xl font-bold text-black'>Projeto {selected}</h1>
+                  <hr className='my-3 border-black' />
+                  <ul className='flex flex-col gap-5 text-xl text-gray-900'>
+                    <li>Quais säo as autarquias envolvidas? <p className='font-bold text-black'>{autarquia?.nome}</p></li>
+                    <li>Qual o motivo da autarquia não protocolada? <p className='font-bold text-black'>{autarquia?.motivoAutarquiaSemProtocolo}</p></li>
+                    <li>Qual o status do projeto na autarquia? <p className='font-bold text-black'>{autarquia?.statusAutarquia}</p></li>
+                    <li>Qual o contato da autarquia? <p className='font-bold text-black'>{autarquia?.contatoAutarquia}</p></li>
+                    <li>Qual a última interação com a autarquia? e qual o prazo para resposta? <p className='font-bold text-black'>{autarquia?.ultimaInteracaoEPrazoResposta}</p></li>
+                    <li>É possível desenvolver alguem contato com a autarquia? <p className='font-bold text-black'>{autarquia?.desenvolverContato}</p></li>
+                    <li>Quais os próximos passos do processo? <p className='font-bold text-black'>{autarquia?.proximosPassosEPrazo}</p></li>
+                    <li>Qual a vigência? <p className='font-bold text-black'>{autarquia?.vigencia}</p></li>
                   </ul>
                 </section>
               </div>
 
               {/* Right column */}
               <div className='grid h-full grid-cols-1 gap-4'>
-                <section className='p-10 overflow-hidden border rounded-lg shadow bg-white/20 border-white/20 backdrop-blur-md'>
-                  <h1 className='mb-5 text-3xl font-bold text-white'>Projetos</h1>
+                <section className='p-10 overflow-hidden bg-white border rounded-lg shadow border-white/20 backdrop-blur-md'>
+                  <h1 className='text-3xl font-bold text-black'>Projetos</h1>
+                  <hr className='my-3 border-black' />
                   <ul className='grid gap-3'>
-                    {projects.map((id) => (
+                    {projetos?.map((projeto, i) => (
                       <li
-                        className='w-max text-lg font-bold text-white cursor-pointer sm:inline-block after:block after:w-0 after:h-[2px] after:bg-white after:transition-[width] after:duration-300 hover:after:w-full'
-                        onClick={() => getQuestions(id)}
-                        key={id}
+                        className='text-lg font-bold text-black'
+                        key={projeto.id}
                       >
-                        ID {id}
+                        ID {projeto.id} - {projeto.autarquias.map(autarquia => {
+                          return <button className='mr-2 w-max cursor-pointer sm:inline-block after:block after:w-0 after:h-[2px] after:bg-black after:transition-[width] after:duration-300 hover:after:w-full' key={autarquia.nome} onClick={() => getAutarquia(projeto.id, autarquia.nome)}>{autarquia.nome}</button>
+                        })}
                       </li>
                     ))}
                   </ul>
@@ -83,12 +96,12 @@ export default function Home({ projects }: { projects: number[] }) {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`);
-  const data = await response.json();
-  const projects = data.projects.map((i: { id: number }) => i.id) as number[];
+  const data = await response.json() as { projects: Projeto[] };
+  const projetos = data['projects'].map((projeto) => projeto);
 
   return {
     props: {
-      projects,
+      projetos,
     },
   };
 };
