@@ -51,10 +51,9 @@ export default function Home({ projetos }: { projetos: Projeto[] }) {
               {/* Left column */}
               <div className='grid h-full grid-cols-1 gap-4 lg:col-span-2'>
                 <section className='p-10 overflow-hidden bg-white border rounded-lg shadow border-white/20 backdrop-blur-md'>
-                  <h1 className='text-3xl font-bold text-black'>Projeto {selected}</h1>
+                  <h1 className='text-3xl font-bold text-black'>Projeto {selected} - {autarquia?.nome}</h1>
                   <hr className='my-3 border-black' />
                   <ul className='flex flex-col gap-5 text-xl text-gray-900'>
-                    <li>Quais säo as autarquias envolvidas? <p className='font-bold text-black'>{autarquia?.nome}</p></li>
                     <li>Qual o motivo da autarquia não protocolada? <p className='font-bold text-black'>{autarquia?.motivoAutarquiaSemProtocolo}</p></li>
                     <li>Qual o status do projeto na autarquia? <p className='font-bold text-black'>{autarquia?.statusAutarquia}</p></li>
                     <li>Qual o contato da autarquia? <p className='font-bold text-black'>{autarquia?.contatoAutarquia}</p></li>
