@@ -18,13 +18,13 @@ export const Header = () => {
                 height={65}
                 width={65}
                 src='https://infinitel-telecom.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo-infinitel.10de69e9.png&w=640&q=75'
-                alt='Workflow'
+                alt='Infinitel'
               />
             </a>
           </div>
-          <div className='lg:ml-4 lg:flex lg:items-center lg:pr-0.5'>
+          {/* <div className='lg:ml-4 lg:flex lg:items-center lg:pr-0.5'>
             <Image width={35} height={35} className='rounded-full' src={user.imageUrl} alt='' />
-          </div>
+          </div> */}
         </div>
       </div>
     </header>
