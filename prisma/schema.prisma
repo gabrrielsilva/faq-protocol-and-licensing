@@ -8,13 +8,21 @@ datasource db {
 }
 
 model Projeto {
-  id           Int         @id
-  autarquias   Autarquia[]
+  id                      Int         @id
+  descricao               String?
+  data_acionamento        String?
+  cidade                  String[]
+  estado                  String?
+  data_previsao_licenca   String?
+  data_real_licenca       String?
+  cliente                 String?
+  observacao_cliente      String?
+  autarquias              Autarquia[]
 }
 
 model Autarquia {
   id                              Int      
-  projeto                         Projeto   @relation(fields: [id], references: [id])
+  projeto                         Projeto           @relation(fields: [id], references: [id])
   nome                            NomeAutarquia
   motivoAutarquiaSemProtocolo     String?
   statusAutarquia                 StatusAutarquia?
@@ -23,6 +31,11 @@ model Autarquia {
   desenvolverContato              String?
   proximosPassosEPrazo            String?
   vigencia                        String?
+  km_aereo                        String?
+  km_sub                          String?
+  data_previsao_protocolo         String?
+  data_real_protocolo             String?
+  protocolo                       String?
 
   @@id([id, nome])
 }

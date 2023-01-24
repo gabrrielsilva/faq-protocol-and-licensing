@@ -2,29 +2,17 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@font-face {
+  font-family: 'Matter Regular';
+  src: url(../public/fonts/Matter-Regular.otf);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+@font-face {
+  font-family: 'Matter Semibold';
+  src: url(../public/fonts/Matter-SemiBold.otf);
 }
 
-* {
-  box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+@font-face {
+  font-family: 'Matter Heavy';
+  src: url(../public/fonts/Matter-Heavy.otf);
 }
