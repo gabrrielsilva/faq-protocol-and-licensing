@@ -10,7 +10,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
   const projects = await prisma.projeto.findMany({
     include: {
-      autarquias: true
+      autarquias: true,
     }
   });
   projects ? res.status(200).json({ projects }) : res.status(404);

@@ -1,15 +1,32 @@
 import { Tab } from '@headlessui/react';
 import classNames from '../utils/classNames';
+import { H3 } from './typography/H3';
+import { Paragraph } from './typography/Paragraph';
 
 type TabsProps = {
   autarquias: {
     name: string;
+    about: {
+      km_aereo: string,
+      km_sub: string,
+      data_previsao_protocolo: string,
+      data_real_protocolo: string,
+      protocolo: string,
+    }
     faq: {
       question: string;
       answer: string;
     }[];
   }[];
 };
+
+const label = [
+  'km aéreo',
+  'km subterrâneo',
+  'data prevista de protocolo',
+  'data real de protocolo',
+  'protocolo'
+]
 
 export const Tabs = ({ autarquias }: TabsProps) => {
   return (
@@ -22,7 +39,6 @@ export const Tabs = ({ autarquias }: TabsProps) => {
               className={({ selected }) =>
                 classNames(
                   'w-full rounded-lg py-2.5 text-sm font-matterSemibold leading-5 text-blue-700',
-                  'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2',
                   selected ? 'bg-white shadow' : 'text-blue-100 hover:bg-white/[0.12] hover:text-white'
                 )
               }
@@ -32,13 +48,22 @@ export const Tabs = ({ autarquias }: TabsProps) => {
           ))}
         </Tab.List>
         <Tab.Panels className='mt-2'>
-          {autarquias.map(({ faq }, idx) => (
+          {autarquias.map(({ faq, about }, idx) => (
             <Tab.Panel key={idx} className='p-3 bg-white rounded-xl'>
+              <section className='grid w-full grid-cols-3 gap-5 px-3'>
+                {Object.keys(about).map((key, i) => (
+                  <div key={key} className='flex flex-col'>
+                    <H3 text={label[i]} />
+                    <Paragraph text={about[key as keyof typeof about]} />
+                  </div>
+                ))}
+              </section>
+              <hr className='my-5' />
               <ul>
                 {faq.map(({ question, answer }) => (
                   <li key={question} className='relative p-3 rounded-md hover:bg-gray-100'>
-                    <h3 className='text-lg leading-5 font-matterSemibold'>{question}</h3>
-                    <p className='text-lg text-gray-600 font-matterRegular'>{answer}</p>
+                    <H3 text={question} />
+                    <Paragraph text={answer} />
                   </li>
                 ))}
               </ul>

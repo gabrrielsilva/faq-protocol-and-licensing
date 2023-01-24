@@ -17,6 +17,7 @@ model Projeto {
   data_real_licenca       String?
   cliente                 String?
   observacao_cliente      String?
+  orgao                   String?
   autarquias              Autarquia[]
 }
 
