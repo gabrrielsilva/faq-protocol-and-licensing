@@ -22,10 +22,12 @@ const label = [
 export const About = ({ projeto }: AboutProps) => {
   return (
     <section className='grid w-full grid-cols-3 gap-5 p-6 bg-white h-min rounded-xl'>
-      {Object.values(projeto).map((value, i) => (
+      {Object.keys(projeto).map((key, i) => (
         <div key={i}>
           <H3 text={label[i]} />
-          <Paragraph text={value?.toString()} />
+          {key !== ('autarquias' as keyof Projeto) && (
+            <Paragraph text={projeto[key as keyof Projeto] as string | number} />
+          )}
         </div>
       ))}
     </section>

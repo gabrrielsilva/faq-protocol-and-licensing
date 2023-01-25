@@ -8,20 +8,20 @@ import { Tabs } from '../components/Tabs';
 import { Title } from '../components/Title';
 
 export type Projeto = {
-  id: number
-  descricao: string
-  data_acionamento: string
-  cidade: string
-  estado: string
-  data_previsao_licenca: string
-  data_real_licenca: string
-  cliente: string
-  observacao_cliente: string
-  orgao: string
-  autarquias: Autarquia[]
+  id: number,
+  descricao: string,
+  data_acionamento: string,
+  cidade: string,
+  estado: string,
+  data_previsao_licenca: string,
+  data_real_licenca: string,
+  cliente: string,
+  observacao_cliente: string,
+  orgao: string,
+  autarquias: Autarquia[],
 }
 
-type Autarquia = {
+export type Autarquia = {
   id: string,
   nome: 'PREFEITURA' | 'CONVIAS' | 'RODOVIA' | 'FERROVIA' | 'ENERGIA',
   motivoAutarquiaSemProtocolo: string,

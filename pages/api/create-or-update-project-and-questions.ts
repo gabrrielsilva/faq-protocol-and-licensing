@@ -27,7 +27,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
               ultimaInteracaoEPrazoResposta: autarquia.ultimaInteracaoEPrazoResposta ? autarquia.ultimaInteracaoEPrazoResposta : undefined,
               desenvolverContato: autarquia.desenvolverContato ? autarquia.desenvolverContato : undefined,
               proximosPassosEPrazo: autarquia.proximosPassosEPrazo ? autarquia.proximosPassosEPrazo : undefined,
-              vigencia: autarquia.vigencia ? autarquia.vigencia : undefined 
+              vigencia: autarquia.vigencia ? autarquia.vigencia : undefined ,
+              km_aereo: autarquia.km_aereo ? autarquia.km_aereo : undefined,
+              km_sub: autarquia.km_sub ? autarquia.km_sub : undefined,
+              data_previsao_protocolo: autarquia.data_previsao_protocolo ? autarquia.data_previsao_protocolo : undefined,
+              data_real_protocolo: autarquia.data_real_protocolo ? autarquia.data_real_protocolo : undefined,
+              protocolo: autarquia.protocolo ? autarquia.protocolo : undefined,
             },
             where: {
               id_nome: {
@@ -58,7 +63,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
               ultimaInteracaoEPrazoResposta: autarquia.ultimaInteracaoEPrazoResposta ? autarquia.ultimaInteracaoEPrazoResposta : undefined,
               desenvolverContato: autarquia.desenvolverContato ? autarquia.desenvolverContato : undefined,
               proximosPassosEPrazo: autarquia.proximosPassosEPrazo ? autarquia.proximosPassosEPrazo : undefined,
-              vigencia: autarquia.vigencia ? autarquia.vigencia : undefined 
+              vigencia: autarquia.vigencia ? autarquia.vigencia : undefined,
+              km_aereo: autarquia.km_aereo ? autarquia.km_aereo : undefined,
+              km_sub: autarquia.km_sub ? autarquia.km_sub : undefined,
+              data_previsao_protocolo: autarquia.data_previsao_protocolo ? autarquia.data_previsao_protocolo : undefined,
+              data_real_protocolo: autarquia.data_real_protocolo ? autarquia.data_real_protocolo : undefined,
+              protocolo: autarquia.protocolo ? autarquia.protocolo : undefined,
             },
             update: {
               nome: autarquia.nome,
@@ -68,7 +78,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
               ultimaInteracaoEPrazoResposta: autarquia.ultimaInteracaoEPrazoResposta ? autarquia.ultimaInteracaoEPrazoResposta : undefined,
               desenvolverContato: autarquia.desenvolverContato ? autarquia.desenvolverContato : undefined,
               proximosPassosEPrazo: autarquia.proximosPassosEPrazo ? autarquia.proximosPassosEPrazo : undefined,
-              vigencia: autarquia.vigencia ? autarquia.vigencia : undefined 
+              vigencia: autarquia.vigencia ? autarquia.vigencia : undefined,
+              km_aereo: autarquia.km_aereo ? autarquia.km_aereo : undefined,
+              km_sub: autarquia.km_sub ? autarquia.km_sub : undefined,
+              data_previsao_protocolo: autarquia.data_previsao_protocolo ? autarquia.data_previsao_protocolo : undefined,
+              data_real_protocolo: autarquia.data_real_protocolo ? autarquia.data_real_protocolo : undefined,
+              protocolo: autarquia.protocolo ? autarquia.protocolo : undefined,
             },
             where: {
               id_nome: {

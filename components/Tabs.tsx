@@ -51,10 +51,10 @@ export const Tabs = ({ autarquias }: TabsProps) => {
           {autarquias.map(({ faq, about }, idx) => (
             <Tab.Panel key={idx} className='p-3 bg-white rounded-xl'>
               <section className='grid w-full grid-cols-3 gap-5 px-3'>
-                {Object.keys(about).map((key, i) => (
-                  <div key={key} className='flex flex-col'>
+                {Object.values(about).map((value, i) => (
+                  <div key={value} className='flex flex-col'>
                     <H3 text={label[i]} />
-                    <Paragraph text={about[key as keyof typeof about]} />
+                    <Paragraph text={value} />
                   </div>
                 ))}
               </section>
