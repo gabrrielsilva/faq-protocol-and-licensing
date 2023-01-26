@@ -26,7 +26,7 @@ export const About = ({ projeto }: AboutProps) => {
         <div key={i}>
           <H3 text={label[i]} />
           {key !== ('autarquias' as keyof Projeto) && (
-            <Paragraph text={projeto[key as keyof Projeto] as string | number} />
+            <Paragraph text={label[i].includes('data') && (projeto[key as keyof Projeto]) ? (projeto[key as keyof Projeto]?.toString()).substring(8, 10) + '/' + (projeto[key as keyof Projeto]?.toString()).substring(5, 7) + '/' + (projeto[key as keyof Projeto]?.toString()).substring(0, 4) : (projeto[key as keyof Projeto] as string | number)} />
           )}
         </div>
       ))}

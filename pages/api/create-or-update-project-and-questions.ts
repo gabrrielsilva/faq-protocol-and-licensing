@@ -1,22 +1,31 @@
 import { Autarquia } from '@prisma/client';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import NextCors from 'nextjs-cors';
+import { Projeto } from '..';
 import { prisma } from '../../config/prisma';
 
-type Input = { id: string, autarquia: Autarquia }
+type Input = { id: string, projeto: Projeto, autarquia: Autarquia }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   await NextCors(req, res, { methods: ['GET', 'PUT', 'POST', 'DELETE'], origin: '*', optionsSuccessStatus: 200 });
-  console.log(req.method, req.body);
   
   if (req.method === 'POST') {
-    const { id, autarquia } = req.body as Input;
+    const { projeto, autarquia } = req.body as Input;
     
-    if (!id || !autarquia) throw Error('Missing params');
+    if (!projeto.id || !autarquia) throw Error('Missing params');
 
     await prisma.projeto.create({
       data: {
-        id: +id,
+        id: projeto.id,
+        descricao: projeto.descricao,
+        data_acionamento: projeto.data_acionamento,
+        cidade: projeto.cidade,
+        estado: projeto.estado,
+        data_previsao_licenca: projeto.data_previsao_licenca,
+        data_real_licenca: projeto.data_real_licenca,
+        cliente: projeto.cliente,
+        observacao_cliente: projeto.observacao_cliente,
+        orgao: projeto.orgao,
         autarquias: {
           connectOrCreate: {
             create: {
@@ -36,7 +45,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             },
             where: {
               id_nome: {
-                id: +id,
+                id: projeto.id,
                 nome: autarquia.nome
               }
             }
@@ -48,11 +57,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   if (req.method === 'PUT') {
-    const { id, autarquia } = req.body as Input;
+    const { projeto, autarquia } = req.body as Input;
 
     await prisma.projeto.update({
       data: {
-        id: +id,
+        id: projeto.id,
+        descricao: projeto.descricao,
+        data_acionamento: projeto.data_acionamento,
+        cidade: projeto.cidade,
+        estado: projeto.estado,
+        data_previsao_licenca: projeto.data_previsao_licenca,
+        data_real_licenca: projeto.data_real_licenca,
+        cliente: projeto.cliente,
+        observacao_cliente: projeto.observacao_cliente,
+        orgao: projeto.orgao,
         autarquias: {
           upsert: {
             create: {
@@ -87,7 +105,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             },
             where: {
               id_nome: {
-                id: +id,
+                id: projeto.id,
                 nome: autarquia.nome
               }
             }
@@ -95,7 +113,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
       },
       where: {
-        id: +id,
+        id: projeto.id,
       }
     })
     res.status(204).end();

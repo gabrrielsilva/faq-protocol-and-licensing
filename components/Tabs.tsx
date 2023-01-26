@@ -20,15 +20,7 @@ type TabsProps = {
   }[];
 };
 
-const label = [
-  'km aéreo',
-  'km subterrâneo',
-  'data prevista de protocolo',
-  'data real de protocolo',
-  'protocolo'
-]
-
-export const Tabs = ({ autarquias }: TabsProps) => {
+export const Tabs = ({ autarquias }: TabsProps) => {  
   return (
     <div className='w-full'>
       <Tab.Group>
@@ -51,12 +43,26 @@ export const Tabs = ({ autarquias }: TabsProps) => {
           {autarquias.map(({ faq, about }, idx) => (
             <Tab.Panel key={idx} className='p-3 bg-white rounded-xl'>
               <section className='grid w-full grid-cols-3 gap-5 px-3'>
-                {Object.values(about).map((value, i) => (
-                  <div key={value} className='flex flex-col'>
-                    <H3 text={label[i]} />
-                    <Paragraph text={value} />
-                  </div>
-                ))}
+                <div className='flex flex-col'> 
+                  <H3 text='metragem total' /> 
+                  <Paragraph text={(about.km_aereo || '-') + ' m'} />
+                </div>
+                {/* <div className='flex flex-col'> 
+                  <H3 text='metragem subterrânea' /> 
+                  <Paragraph text={(about.km_sub || '-') + ' m'} />
+                </div> */}
+                <div className='flex flex-col'> 
+                  <H3 text='data prevista de protocolo' /> 
+                  <Paragraph text={new Date(about.data_previsao_protocolo).toLocaleDateString('pt-BR')} />
+                </div>
+                <div className='flex flex-col'> 
+                  <H3 text='data real de protocolo' /> 
+                  <Paragraph text={new Date(about.data_real_protocolo).toLocaleString('pt-BR')} />
+                </div>
+                <div className='flex flex-col'> 
+                  <H3 text='protocolo' /> 
+                  <Paragraph text={about.protocolo || '-'} />
+                </div>
               </section>
               <hr className='my-5' />
               <ul>

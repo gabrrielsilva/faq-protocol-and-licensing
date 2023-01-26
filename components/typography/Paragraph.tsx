@@ -3,5 +3,5 @@ type ParagraphProps = {
 }
 
 export const Paragraph = ({ text }: ParagraphProps) => {
-  return <p className='text-lg text-gray-600 font-matterRegular'>{text}</p>
+  return <p className='pb-1 overflow-x-scroll text-lg text-gray-600 font-matterRegular whitespace-nowrap scrollbar-thin scrollbar-track-gray-200 scrollbar-thumb-gray-400'>{text || '-'}</p>
 }
