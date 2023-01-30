@@ -8,15 +8,15 @@ type AboutProps = {
 
 const label = [
   'ID',
-  'descrição',
-  'data de acionamento',
-  'cidade',
-  'estado',
-  'data prevista de licença',
-  'data de licença',
-  'cliente',
-  'observações do cliente',
-  'orgão'
+  'Descrição',
+  'Data de acionamento',
+  'Cidade',
+  'Estado',
+  'Data prevista de licença',
+  'Data de licença',
+  'Cliente',
+  'Observações do cliente',
+  'Orgão'
 ]
 
 export const About = ({ projeto }: AboutProps) => {

@@ -8,7 +8,6 @@ type TabsProps = {
     name: string;
     about: {
       km_aereo: string,
-      km_sub: string,
       data_previsao_protocolo: string,
       data_real_protocolo: string,
       protocolo: string,
@@ -30,7 +29,7 @@ export const Tabs = ({ autarquias }: TabsProps) => {
               key={autarquia.name}
               className={({ selected }) =>
                 classNames(
-                  'w-full rounded-lg py-2.5 text-sm font-matterSemibold leading-5 text-blue-700',
+                  'w-full rounded-lg py-2.5 text-[16px] font-matterSemibold leading-5 text-blue-600',
                   selected ? 'bg-white shadow' : 'text-blue-100 hover:bg-white/[0.12] hover:text-white'
                 )
               }
@@ -44,7 +43,7 @@ export const Tabs = ({ autarquias }: TabsProps) => {
             <Tab.Panel key={idx} className='p-3 bg-white rounded-xl'>
               <section className='grid w-full grid-cols-3 gap-5 px-3'>
                 <div className='flex flex-col'> 
-                  <H3 text='metragem total' /> 
+                  <H3 text='Metragem total' /> 
                   <Paragraph text={(about.km_aereo || '-') + ' m'} />
                 </div>
                 {/* <div className='flex flex-col'> 
@@ -52,20 +51,20 @@ export const Tabs = ({ autarquias }: TabsProps) => {
                   <Paragraph text={(about.km_sub || '-') + ' m'} />
                 </div> */}
                 <div className='flex flex-col'> 
-                  <H3 text='data prevista de protocolo' /> 
+                  <H3 text='Data prevista de protocolo' /> 
                   <Paragraph text={new Date(about.data_previsao_protocolo).toLocaleDateString('pt-BR')} />
                 </div>
                 <div className='flex flex-col'> 
-                  <H3 text='data real de protocolo' /> 
+                  <H3 text='Data real de protocolo' /> 
                   <Paragraph text={new Date(about.data_real_protocolo).toLocaleString('pt-BR')} />
                 </div>
                 <div className='flex flex-col'> 
-                  <H3 text='protocolo' /> 
+                  <H3 text='Protocolo' /> 
                   <Paragraph text={about.protocolo || '-'} />
                 </div>
               </section>
               <hr className='my-5' />
-              <ul>
+              <ul className='grid grid-cols-2'>
                 {faq.map(({ question, answer }) => (
                   <li key={question} className='relative p-3 rounded-md hover:bg-gray-100'>
                     <H3 text={question} />

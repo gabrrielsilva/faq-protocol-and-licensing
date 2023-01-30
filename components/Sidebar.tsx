@@ -12,7 +12,7 @@ export const Sidebar = ({ projetos, handleProjeto }: SidebarProps) => {
 
   return (
     <aside className='col-span-1 py-10 border-r border-white/10'>
-      <div className='relative flex items-end justify-between'>
+      <div className='relative flex items-end justify-between -mt-4'>
         <Title text='Projetos' />
         <input 
           type="text" 
@@ -21,9 +21,11 @@ export const Sidebar = ({ projetos, handleProjeto }: SidebarProps) => {
           placeholder='Pesquisar' 
         />
       </div>
-      <section className='flex flex-col py-6'>
+      <section className='flex flex-col gap-3 py-6 mr-2 -mt-1'>
         {(searchedProjetos || projetos)?.map((projeto) => (
-          <a onClick={() => handleProjeto(projeto)} key={projeto} className='text-lg text-white cursor-pointer font-matterRegular hover:text-blue-400'>ID {projeto}</a>
+          <div onClick={() => handleProjeto(projeto)} key={projeto} className='w-full p-2 px-6 bg-white rounded-lg cursor-pointer'>
+            <a className='text-lg text-blue-600 font-matterSemibold'>ID {projeto}</a>
+          </div>
         ))}
       </section>
     </aside>
