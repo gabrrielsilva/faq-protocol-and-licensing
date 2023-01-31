@@ -89,7 +89,7 @@ export default function Home({ projetos }: { projetos: Projeto[] }) {
         rows.push(row);
       }
     }
-
+    
     const aoaData = [
       [
         'ID',
@@ -115,7 +115,7 @@ export default function Home({ projetos }: { projetos: Projeto[] }) {
         'Data de protocolo',
         'Protocolo',
       ],
-      rows[0],
+      ...rows
     ];
 
     const workBook = XLSX.utils.book_new();
