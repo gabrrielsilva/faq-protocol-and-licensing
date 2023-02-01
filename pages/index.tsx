@@ -54,9 +54,9 @@ const questions = [
 
 export default function Home({ projetos }: { projetos: Projeto[] }) {
   const [projeto, setProjeto] = useState<Projeto>(projetos[0]);
+  const [projectsToDownload, setProjectsToDownload] = useState<number[]>([]);
   const downloadButton = useRef<HTMLAnchorElement>(null);
-  const handleProjeto = (id: number) =>
-    setProjeto(projetos.find((projeto) => projeto.id === id) as Projeto);
+  const handleProjeto = (id: number) => setProjeto(projetos.find((projeto) => projeto.id === id) as Projeto);
 
   function downloadWorkSheet() {
     const rows = [];
@@ -78,9 +78,7 @@ export default function Home({ projetos }: { projetos: Projeto[] }) {
           proximosPassosEPrazo: autarquia.proximosPassosEPrazo,
           vigencia: autarquia.vigencia,
           km_aereo: autarquia.km_aereo,
-          data_previsao_protocolo: new Date(autarquia.data_previsao_protocolo).toLocaleDateString(
-            'pt-BR'
-          ),
+          data_previsao_protocolo: new Date(autarquia.data_previsao_protocolo).toLocaleDateString('pt-BR'),
           data_real_protocolo: new Date(autarquia.data_real_protocolo).toLocaleDateString('pt-BR'),
           protocolo: autarquia.protocolo,
         };
@@ -90,6 +88,7 @@ export default function Home({ projetos }: { projetos: Projeto[] }) {
       }
     }
     
+    const filteredRows = rows.filter(row => projectsToDownload.includes(row[0] as number))
     const aoaData = [
       [
         'ID',
@@ -115,7 +114,7 @@ export default function Home({ projetos }: { projetos: Projeto[] }) {
         'Data de protocolo',
         'Protocolo',
       ],
-      ...rows
+      ...(filteredRows.length > 0 ? filteredRows : rows)
     ];
 
     const workBook = XLSX.utils.book_new();
@@ -160,7 +159,7 @@ export default function Home({ projetos }: { projetos: Projeto[] }) {
         
         <main className='z-10 flex flex-auto w-full max-w-7xl'>
           <div className='grid w-full grid-cols-5'>
-            <Sidebar projetos={projetos.map((p) => p.id)} handleProjeto={handleProjeto} />
+            <Sidebar projetos={projetos.map((p) => p.id)} handleProjeto={handleProjeto} projectsToDownload={projectsToDownload} setProjectsToDownload={setProjectsToDownload} />
             <section className='flex flex-col col-span-4 gap-5 pt-10 pl-10'>
               <Title text='Informações' />
               <About projeto={projeto} />
