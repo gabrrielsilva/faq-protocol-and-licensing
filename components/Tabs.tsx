@@ -52,11 +52,11 @@ export const Tabs = ({ autarquias }: TabsProps) => {
                 </div> */}
                 <div className='flex flex-col'> 
                   <H3 text='Data prevista de protocolo' /> 
-                  <Paragraph text={new Date(about.data_previsao_protocolo).toLocaleDateString('pt-BR')} />
+                  <Paragraph text={about.data_previsao_protocolo ? about.data_previsao_protocolo.substring(8, 10) + '/' + about.data_previsao_protocolo.substring(5, 7) + '/' + about.data_previsao_protocolo.substring(0, 4) : ''} />
                 </div>
                 <div className='flex flex-col'> 
                   <H3 text='Data real de protocolo' /> 
-                  <Paragraph text={new Date(about.data_real_protocolo).toLocaleString('pt-BR')} />
+                  <Paragraph text={about.data_real_protocolo ? about.data_real_protocolo.substring(8, 10) + '/' + about.data_real_protocolo.substring(5, 7) + '/' + about.data_real_protocolo.substring(0, 4) : ''} />
                 </div>
                 <div className='flex flex-col'> 
                   <H3 text='Protocolo' /> 
