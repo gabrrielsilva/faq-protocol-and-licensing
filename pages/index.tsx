@@ -78,8 +78,8 @@ export default function Home({ projetos }: { projetos: Projeto[] }) {
           proximosPassosEPrazo: autarquia.proximosPassosEPrazo,
           vigencia: autarquia.vigencia,
           km_aereo: autarquia.km_aereo,
-          data_previsao_protocolo: new Date(autarquia.data_previsao_protocolo).toLocaleDateString('pt-BR'),
-          data_real_protocolo: new Date(autarquia.data_real_protocolo).toLocaleDateString('pt-BR'),
+          data_previsao_protocolo: autarquia.data_previsao_protocolo.substring(8, 10) + '/' + autarquia.data_previsao_protocolo.substring(5, 7) + '/' + autarquia.data_previsao_protocolo.substring(0, 4),
+          data_real_protocolo: autarquia.data_real_protocolo.substring(8, 10) + '/' + autarquia.data_real_protocolo.substring(5, 7) + '/' + autarquia.data_real_protocolo.substring(0, 4),
           protocolo: autarquia.protocolo,
         };
 
