@@ -16,12 +16,12 @@ const label = [
   'Data de licença',
   'Cliente',
   'Observações do cliente',
-  'Orgão'
+  '1 - Autarquias Envolvidas'
 ]
 
 export const About = ({ projeto }: AboutProps) => {
   return (
-    <section className='grid w-full grid-cols-3 gap-5 p-6 bg-white h-min rounded-xl'>
+    <section className='grid w-full grid-cols-3 gap-5 p-6 overflow-hidden bg-white h-min rounded-xl max-h-[30rem]'>
       {Object.keys(projeto).map((key, i) => (
         <div key={i}>
           <H3 text={label[i]} />

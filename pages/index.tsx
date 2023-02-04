@@ -40,16 +40,13 @@ export type Autarquia = {
 };
 
 const questions = [
-  { question: 'Qual o motivo da autarquia não protocolada?', key: 'motivoAutarquiaSemProtocolo' },
-  { question: 'Qual o status do projeto na autarquia?', key: 'statusAutarquia' },
-  { question: 'Qual o contato da autarquia?', key: 'contatoAutarquia' },
-  {
-    question: 'Qual a última interação com a autarquia? e qual o prazo para resposta?',
-    key: 'ultimaInteracaoEPrazoResposta',
-  },
-  { question: 'É possível desenvolver algum contato com a autarquia?', key: 'desenvolverContato' },
-  { question: 'Quais os próximos passos do processo?', key: 'proximosPassosEPrazo' },
-  { question: 'Qual a vigência?', key: 'vigencia' },
+  { question: '2 - Qual o motivo da autarquia não protocolada?', key: 'motivoAutarquiaSemProtocolo' },
+  { question: '3 - Qual o status do projeto na autarquia?', key: 'statusAutarquia' },
+  { question: '4 - Qual o contato da autarquia?', key: 'contatoAutarquia' },
+  { question: '5 - Qual a última interação com a autarquia? E qual o prazo para resposta?', key: 'ultimaInteracaoEPrazoResposta' },
+  { question: '6 - É possível desenvolver algum contato com a autarquia?', key: 'desenvolverContato' },
+  { question: '7 - Quais os próximos passos do processo e quais são os prazos?', key: 'proximosPassosEPrazo' },
+  { question: '8 - Qual a vigência?', key: 'vigencia' },
 ];
 
 export default function Home({ projetos }: { projetos: Projeto[] }) {
