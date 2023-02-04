@@ -24,7 +24,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         data_previsao_licenca: projeto.data_previsao_licenca,
         data_real_licenca: projeto.data_real_licenca,
         cliente: projeto.cliente,
-        observacao_cliente: projeto.observacao_cliente,
         orgao: projeto.orgao,
         autarquias: {
           connectOrCreate: {
@@ -42,6 +41,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
               data_previsao_protocolo: autarquia.data_previsao_protocolo ? autarquia.data_previsao_protocolo : undefined,
               data_real_protocolo: autarquia.data_real_protocolo ? autarquia.data_real_protocolo : undefined,
               protocolo: autarquia.protocolo ? autarquia.protocolo : undefined,
+              observacao_cliente: autarquia.observacao_cliente ? autarquia.observacao_cliente : undefined,
             },
             where: {
               id_nome: {
@@ -69,7 +69,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         data_previsao_licenca: projeto.data_previsao_licenca,
         data_real_licenca: projeto.data_real_licenca,
         cliente: projeto.cliente,
-        observacao_cliente: projeto.observacao_cliente,
         orgao: projeto.orgao,
         autarquias: {
           upsert: {
@@ -87,6 +86,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
               data_previsao_protocolo: autarquia.data_previsao_protocolo ? autarquia.data_previsao_protocolo : undefined,
               data_real_protocolo: autarquia.data_real_protocolo ? autarquia.data_real_protocolo : undefined,
               protocolo: autarquia.protocolo ? autarquia.protocolo : undefined,
+              observacao_cliente: autarquia.observacao_cliente ? autarquia.observacao_cliente : undefined,
             },
             update: {
               nome: autarquia.nome,
@@ -102,6 +102,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
               data_previsao_protocolo: autarquia.data_previsao_protocolo ? autarquia.data_previsao_protocolo : undefined,
               data_real_protocolo: autarquia.data_real_protocolo ? autarquia.data_real_protocolo : undefined,
               protocolo: autarquia.protocolo ? autarquia.protocolo : undefined,
+              observacao_cliente: autarquia.observacao_cliente ? autarquia.observacao_cliente : undefined,
             },
             where: {
               id_nome: {

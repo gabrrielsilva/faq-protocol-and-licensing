@@ -11,6 +11,7 @@ type TabsProps = {
       data_previsao_protocolo: string,
       data_real_protocolo: string,
       protocolo: string,
+      observacao_cliente: string,
     }
     faq: {
       question: string;
@@ -61,6 +62,10 @@ export const Tabs = ({ autarquias }: TabsProps) => {
                 <div className='flex flex-col'> 
                   <H3 text='Protocolo' /> 
                   <Paragraph text={about.protocolo || '-'} />
+                </div>
+                <div className='flex flex-col col-span-2'> 
+                  <H3 text='Observações' /> 
+                  <Paragraph text={about.observacao_cliente || '-'} />
                 </div>
               </section>
               <hr className='my-5' />

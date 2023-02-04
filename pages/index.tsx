@@ -37,6 +37,7 @@ export type Autarquia = {
   data_previsao_protocolo: string;
   data_real_protocolo: string;
   protocolo: string;
+  observacao_cliente: string
 };
 
 const questions = [
@@ -172,6 +173,7 @@ export default function Home({ projetos }: { projetos: Projeto[] }) {
                       data_previsao_protocolo: autarquia.data_previsao_protocolo,
                       data_real_protocolo: autarquia.data_real_protocolo,
                       protocolo: autarquia.protocolo,
+                      observacao_cliente: autarquia.observacao_cliente
                     },
                   };
                 })}

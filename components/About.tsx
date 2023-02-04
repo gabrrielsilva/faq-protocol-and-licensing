@@ -15,7 +15,6 @@ const label = [
   'Data prevista de licença',
   'Data de licença',
   'Cliente',
-  'Observações do cliente',
   '1 - Autarquias Envolvidas'
 ]
 

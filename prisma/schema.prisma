@@ -16,7 +16,6 @@ model Projeto {
   data_previsao_licenca   String?
   data_real_licenca       String?
   cliente                 String?
-  observacao_cliente      String?
   orgao                   String?
   autarquias              Autarquia[]
 }
@@ -37,6 +36,7 @@ model Autarquia {
   data_previsao_protocolo         String?
   data_real_protocolo             String?
   protocolo                       String?
+  observacao_cliente              String?
 
   @@id([id, nome])
 }
