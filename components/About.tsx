@@ -15,7 +15,7 @@ const label = [
   'Data prevista de licença',
   'Data de licença',
   'Cliente',
-  '1 - Autarquias Envolvidas'
+  '1 - Autarquias envolvidas'
 ]
 
 export const About = ({ projeto }: AboutProps) => {
