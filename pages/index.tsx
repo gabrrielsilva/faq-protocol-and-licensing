@@ -61,13 +61,24 @@ export default function Home({ projetos }: { projetos: Projeto[] }) {
 
     for (let i = 0; i < projetos.length; i++) {
       const projeto = projetos[i];
-      const projetoData = Object.values(projeto);
-      projetoData.pop();
+      const projetoData = {
+        id: projeto.id,
+        descricao: projeto.descricao,
+        data_acionamento: projeto.data_acionamento,
+        cidade: projeto.cidade,
+        estado: projeto.estado,
+        data_previsao_licenca: projeto.data_previsao_licenca,
+        data_real_licenca: projeto.data_real_licenca,
+        cliente: projeto.cliente,
+        prioridade: projeto.prioridade,
+        // orgao: projeto.orgao,
+      }
 
       for (let i = 0; i < projeto.autarquias.length; i++) {
         const autarquia = projeto.autarquias[i];
         const autarquiaData = {
-          nome: autarquia.nome,
+          observacao_cliente: autarquia.observacao_cliente,
+          nome: projeto.orgao,
           motivoAutarquiaSemProtocolo: autarquia.motivoAutarquiaSemProtocolo,
           statusAutarquia: autarquia.statusAutarquia,
           contatoAutarquia: autarquia.contatoAutarquia,
@@ -77,7 +88,7 @@ export default function Home({ projetos }: { projetos: Projeto[] }) {
           vigencia: autarquia.vigencia,
           km_aereo: autarquia.km_aereo,
           data_previsao_protocolo: autarquia.data_previsao_protocolo || '',
-          data_real_protocolo: autarquia.data_real_protocolo || '',
+          data_real_protocolo: autarquia.data_real_protocolo.split('T')[0] || '',
           protocolo: autarquia.protocolo,
         };
 
@@ -97,8 +108,9 @@ export default function Home({ projetos }: { projetos: Projeto[] }) {
         'Data prevista de licença',
         'Data de licença',
         'Cliente',
+        'Prioridade',
         'Observações do cliente',
-        'Orgão',
+        // 'Orgão',
         'Autarquias envolvidas',
         'Motivo de autarquia não protocolada',
         'Status do projeto na autarquia',
