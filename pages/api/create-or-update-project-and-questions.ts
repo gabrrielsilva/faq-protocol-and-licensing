@@ -25,6 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         data_real_licenca: projeto.data_real_licenca,
         cliente: projeto.cliente,
         orgao: projeto.orgao,
+        prioridade: projeto.prioridade,
         autarquias: {
           connectOrCreate: {
             create: {
@@ -70,6 +71,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         data_real_licenca: projeto.data_real_licenca,
         cliente: projeto.cliente,
         orgao: projeto.orgao,
+        prioridade: projeto.prioridade,
         autarquias: {
           upsert: {
             create: {

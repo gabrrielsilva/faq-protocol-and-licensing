@@ -17,6 +17,7 @@ export type Projeto = {
   data_previsao_licenca: string;
   data_real_licenca: string;
   cliente: string;
+  prioridade: string;
   orgao: string;
   autarquias: Autarquia[];
 };

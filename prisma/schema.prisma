@@ -17,6 +17,7 @@ model Projeto {
   data_real_licenca       String?
   cliente                 String?
   orgao                   String?
+  prioridade              String?
   autarquias              Autarquia[]
 }
 
