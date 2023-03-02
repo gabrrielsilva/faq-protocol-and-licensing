@@ -88,7 +88,7 @@ export default function Home({ projetos }: { projetos: Projeto[] }) {
           vigencia: autarquia.vigencia,
           km_aereo: autarquia.km_aereo,
           data_previsao_protocolo: autarquia.data_previsao_protocolo || '',
-          data_real_protocolo: autarquia.data_real_protocolo.split('T')[0] || '',
+          data_real_protocolo: autarquia.data_real_protocolo?.split('T')[0] || '',
           protocolo: autarquia.protocolo,
         };
 
